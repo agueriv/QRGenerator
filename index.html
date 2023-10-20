@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Generator</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="shortcut icon" href="img/LogoQR.png" type="image/x-icon" />
+
+  <!-- IMPORTACIÓN DE FUENTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/qrcode.js"></script>
+  <script type="text/javascript" src="js/download.js"></script>
+  <script type="text/javascript" src="js/qrGenerator.js"></script>
+</head>
+
+<body>
+  <h1>QR GENERATOR</h1>
+  <h2>Generate your own QR code in a matter of seconds</h2>
+  <div id="code-qr">
+    <div id="controls">
+      <button id="redo" onclick="javascript:reDo()">
+        <img src="img/redo.png" alt="" />
+      </button>
+      <input id="text" type="text" placeholder="Enter your URL and press ENTER" />
+      <button id="create" onclick="javascript:generateQR()">
+        Generate QR
+      </button>
+    </div>
+    <div id="qrcode"></div>
+    <input id="filename" type="text" placeholder="Give a name to your QR!!" />
+    <button id="download-b" onclick="javascript:saveQR()">
+      Download QR
+    </button>
+  </div>
+  <script>
+    // Declarar alto de pantalla
+    $(document).ready(function () {
+      var height = $(window).height();
+      $("body").height(height);
+    });
+    // Evento de creación de QR al hacer ENTER
+    $("#text").on("keydown", function () {
+      if (event.keyCode === 13) {
+        $("#create").click();
+      }
+    });
+    // Evento de descarga de QR al hacer ENTER
+    $("#filename").on("keydown", function () {
+      if (event.keyCode === 13) {
+        $("#download-b").click();
+      }
+    });
+  </script>
+</body>
+
+</html>
